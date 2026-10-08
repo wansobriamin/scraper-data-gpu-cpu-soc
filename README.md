@@ -4,7 +4,7 @@ Scraper *polite*, *incremental*, dan *robust* untuk mengumpulkan data benchmark
 device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi performa ShaderBench.
 
 ## 🌟 Apa itu ShaderBench?
-ShaderBench adalah alat analisis performa dan rekomendasi setting Minecraft berbasis web. Alih-alih hanya memberikan tebakan, aplikasi ini menggunakan pendekatan provenance-first (jujur terhadap asal-usul data) dan model fisika satu-skalar yang dipadukan dengan Machine Learning (Random Forest).
+[ShaderBench](https://ShaderBench.com) adalah alat analisis performa dan rekomendasi setting Minecraft berbasis web. Alih-alih hanya memberikan tebakan, aplikasi ini menggunakan pendekatan provenance-first (jujur terhadap asal-usul data) dan model fisika satu-skalar yang dipadukan dengan Machine Learning (Random Forest).
 > ## 🔗 Repo ini adalah bagian pertama dari pipeline 3 repo
 >
 > ```

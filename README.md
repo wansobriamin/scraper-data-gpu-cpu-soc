@@ -79,7 +79,7 @@ dataDevice/                      ← ROOT eksekusi (cwd saat menjalankan)
 ├── scraper/                     ← repo #1
 │   └── scraper/{fetcher,run_scrape,parsers/...}
 ├── convert/                     ← repo #2
-│   └── convert/{normalize,normalize_pc}.py
+│   └── convert/{normalize_soc,normalize_pc}.py
 ├── build/                       ← repo #3 (opsional)
 │   └── build/{...}
 └── data/                        ← dibuat otomatis saat import paths.py

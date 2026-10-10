@@ -16,7 +16,7 @@ device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi perform
 > |---|---|---|
 > | **scraper** (ini) | [`Scraper`](https://github.com/wansobriamin/scraper-data-gpu-cpu-soc) | Scrape benchmark mentah |
 > | **convert** | [`convert`](https://github.com/<USERNAME>/shaderbench-convert) | Skor mentah → `gpu_index`/`cpu_index` (CSV staging) |
-> | **build** | [`build`](https://github.com/<USERNAME>/shaderbench-build) | Kalibrasi beban shader + QC 3 lapis → DB final |
+> | **build** | [`build`](https://github.com/wansobriamin/build-csv-to-json-benchmark-device) | mengubah data CSV staging menjadi file database `.json`  |
 >
 > **Repo ini hanya berisi kode.** Folder `data/` dan file `paths.py` dibuat sendiri
 > mengikuti tutorial Setup di bawah.

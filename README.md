@@ -37,7 +37,7 @@ device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi perform
 
 ## CLI
 ```bash
-python -m scraper.run_scrape --delay 3 --pages 3 --details 60 --pc-pages 3
+python -m scraper.run_scrape --ignore-robots --delay 3
 python -m scraper.run_scrape --force              # abaikan cache
 python -m scraper.run_scrape --skip-pc            # hanya SoC mobile
 python -m scraper.run_scrape --skip-soc           # hanya PC

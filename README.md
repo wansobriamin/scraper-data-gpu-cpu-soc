@@ -15,7 +15,7 @@ device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi perform
 > | Repo | URL | Peran |
 > |---|---|---|
 > | **scraper** (ini) | [`Scraper`](https://github.com/wansobriamin/scraper-data-gpu-cpu-soc) | Scrape benchmark mentah |
-> | **convert** | [`convert`](https://github.com/<USERNAME>/shaderbench-convert) | Skor mentah → `gpu_index`/`cpu_index` (CSV staging) |
+> | **convert** | [`convert`](https://github.com/wansobriamin/normalize-convert-raw-to-staging) | Skor mentah → `gpu_index`/`cpu_index` (CSV staging) |
 > | **build** | [`build`](https://github.com/wansobriamin/build-csv-to-json-benchmark-device) | mengubah data CSV staging menjadi file database `.json`  |
 >
 > **Repo ini hanya berisi kode.** Folder `data/` dan file `paths.py` dibuat sendiri
@@ -23,7 +23,7 @@ device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi perform
 
 ---
 
-## 1. Pengertian Kode
+## 🛠️ Komponen Utama
 
 | File | Tanggung jawab |
 |---|---|
@@ -35,7 +35,7 @@ device (SoC mobile, CPU & GPU PC) Outputnya menjadi bahan baku kalibrasi perform
 > ⚠️ Sebelum produksi, ganti placeholder `"https://..."` dengan URL sumber aktual
 > dan isi `r["source"] = "<nama_situs>"` di `run_scrape.py`.
 
-### 2 CLI
+## CLI
 ```bash
 python -m scraper.run_scrape --delay 3 --pages 3 --details 60 --pc-pages 3
 python -m scraper.run_scrape --force              # abaikan cache
@@ -44,18 +44,25 @@ python -m scraper.run_scrape --skip-soc           # hanya PC
 python -m scraper.run_scrape --no-clean           # lewati clean_spaces
 ```
 
-## 3. Setup Workspace
+## WorkFlow
 
-### 3.1 Buat root workspace
+```text
+  SUMBER DATA PUBLIK ( Web Benchmark )                 
+                                │  (1) FETCH + CACHE
+```
+
+## Setup Workspace
+
+### 1 Buat root workspace
 
 ```bash
 mkdir dataDevice && cd dataDevice
 git clone https://github.com/wansobriamin/scraper-data-gpu-cpu-soc.git scraper
-git clone https://github.com/<USERNAME>/shaderbench-convert.git convert   # WAJIB
-git clone https://github.com/<USERNAME>/shaderbench-build.git   build     # opsional untuk build database
+git clone https://github.com/wansobriamin/normalize-convert-raw-to-staging convert   
+git clone https://github.com/wansobriamin/build-csv-to-json-benchmark-device build     
 ```
 
-### 3.2 Buat `paths.py` di ROOT workspace (sejajar dengan folder repo)
+### 2 Buat `paths.py` di ROOT workspace (sejajar dengan folder repo)
 
 ```python
 # dataDevice/paths.py
@@ -71,7 +78,7 @@ for _d in (RAW_DIR, STAGING_DIR, DB_DIR):
     _d.mkdir(parents=True, exist_ok=True)
 ```
 
-### 3.3 Struktur akhir workspace
+### 3 Struktur akhir workspace
 
 ```text
 dataDevice/                      ← ROOT eksekusi (cwd saat menjalankan)
@@ -81,14 +88,14 @@ dataDevice/                      ← ROOT eksekusi (cwd saat menjalankan)
 ├── convert/                     ← repo #2
 │   └── convert/{normalize_soc,normalize_pc}.py
 ├── build/                       ← repo #3 (opsional)
-│   └── build/{...}
+│   └── build/{build_database_cpu/...}
 └── data/                        ← dibuat otomatis saat import paths.py
     ├── raw/        
     ├── staging/    
     ├── db/         
 ```
 
-## 4. Etika & Lisensi
+## Etika & Lisensi
 
 - Data benchmark adalah milik sumber publik masing-masing; scraper ini hanya
   mengagregasi untuk riset pribadi dan pengembangan ShaderBench.
